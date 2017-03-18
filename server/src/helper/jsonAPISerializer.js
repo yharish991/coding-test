@@ -3,33 +3,18 @@ const Serializer = require('jsonapi-serializer').Serializer;
 
 function userProfileSerializer(data, version) {
   return _.merge(new Serializer('users', {
-    attributes: ['accessToken', 'userProfile'],
+    attributes: ['userProfile'],
     keyForAttribute: 'camelCase',
   }).serialize(data), { jsonapi: { version } });
 }
 
-function isJSON(str) {
-  try {
-    JSON.parse(str);
-  } catch (e) {
-    return false;
-  }
-  return true;
-}
-
 function errorSerializer(error, version) {
-  let errors = [];
-  if (error.error && isJSON(error.error)) {
-    const errObj = JSON.parse(error.error);
-    if (_.has(errObj, 'errors')) {
-      errors = errObj.errors;
-    }
-  } else {
-    errors.push({
-      status: error.statusCode,
-      detail: error.message,
-    });
-  }
+  const errors = [];
+  errors.push({
+    status: error.statusCode,
+    detail: error.message,
+    title: error.title,
+  });
   return {
     errors,
     jsonapi: { version },
