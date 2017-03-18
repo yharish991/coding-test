@@ -4,7 +4,7 @@ const cors = require('cors');
 const express = require('express');
 const http = require('http');
 const morgan = require('morgan');
-require('dotenv').config()
+require('dotenv').config();
 
 const app = express();
 const port = process.env.VCAP_APP_PORT || 3005;

@@ -13,7 +13,7 @@ const JOI_OPTIONS = {
 };
 
 function createUser(req, res) {
-  const { error } = Joi.validate(req.body, schema, JOI_OPTIONS);
+  const { error, value } = Joi.validate(req.body, schema, JOI_OPTIONS);
   if (error) {
     return res.status(400).send(errorSerializer({
       message: error.details,
@@ -21,9 +21,9 @@ function createUser(req, res) {
       statusCode: 400,
     }, '1.0.0'));
   }
-  service.createUser(req.body)
-  .then(resp => res.status(201).send(userProfileSerializer(resp, '1.0.0')))
-  .catch(err => res.status(500).send(errorSerializer(err, '1.0.0')));
+  return service.createUser(value)
+    .then(resp => res.status(201).send(userProfileSerializer(resp, '1.0.0')))
+    .catch(err => res.status(500).send(errorSerializer(err, '1.0.0')));
 }
 
 router.post('/', createUser);
