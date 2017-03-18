@@ -1,0 +1,14 @@
+sudo: required
+language: node_js
+node_js:
+  - '6'
+
+script:
+  - . /tmp/travis-template/backend-nodejs/test
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: /tmp/travis-template/backend-nodejs/deploy.ucd es-v2-middleware engage-support
+    on:
+      branch: 1-8-0
