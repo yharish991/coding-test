@@ -32,4 +32,4 @@ To run lint tests `gulp lint`
 
 ## API Documentation
 
-Run swagger on local machine and the open the file `coding-test.yml` file in the swagger editor.
+Run swagger on local machine and the open the file `coding-test.yml` in the swagger editor.
