@@ -6,7 +6,7 @@
 
 1. Install NodeJS (Check your node version with `node -v`)
 
-2. Install yarn `yarn install`
+2. Install yarn `npm install -g yarn`
 
 2. Install basic packages by running `yarn install`
 
