@@ -28,3 +28,8 @@
 To run the unit tests `gulp test`
 
 To run lint tests `gulp lint`
+
+
+## Documentation
+
+Run swagger on local machine and the open the file `coding-test.yml` file in the swagger editor.
