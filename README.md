@@ -21,3 +21,10 @@
     Add the credentials in the .env file
 
 4. To start the app `node app.js`
+
+
+## Gulp tasks
+
+To run the unit tests `gulp test`
+
+To run lint tests `gulp lint`
