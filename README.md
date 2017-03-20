@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/yharish991/coding-test.svg?branch=master)](https://travis-ci.org/yharish991/coding-test)
 
+DB used : Cloudant
+
 ## Setup
 
 1. Install NodeJS (Check your node version with `node -v`)
