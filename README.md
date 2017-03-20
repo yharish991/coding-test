@@ -33,3 +33,7 @@ To run lint tests `gulp lint`
 ## API Documentation
 
 Run swagger on local machine and the open the file `coding-test.yml` in the swagger editor.
+
+## Load testing
+
+Open `coding-test.jmx` in jmeter and run it or run via command line. 
