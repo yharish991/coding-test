@@ -12,12 +12,12 @@
 
 3. Add environment variables to your particular shell.
 
-  `export CLOUDANT_USERNAME="{CLOUDANT_USERNAME}"`
+    `export CLOUDANT_USERNAME="{CLOUDANT_USERNAME}"`
 
-  `export CLOUDANT_PASSWORD="{CLOUDANT_PASSWORD}"`
+    `export CLOUDANT_PASSWORD="{CLOUDANT_PASSWORD}"`
   
-  or
+    or
 
-  Add the credentials in the .env file
+    Add the credentials in the .env file
 
 4. To start the app `node app.js`
