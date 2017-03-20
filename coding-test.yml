@@ -1,0 +1,116 @@
+---
+swagger: '2.0'
+info:
+  title: coding-test
+  description: Backend component
+  version: '1.0'
+produces:
+- application/json
+host: localhost:3005
+basePath: "/"
+paths:
+  "/users":
+    post:
+      operationId: createUser
+      description: Creates user
+      parameters:
+      - name: Authroization
+        in: header
+        description: User credentials in type 'Basic Auth'
+        required: true
+        type: string
+      - name: Referer
+        in: header
+        description: Referer to pass the address
+        required: true
+        type: string
+      responses:
+        '201':
+          "$ref": "#/responses/userResponse"
+        '400':
+          "$ref": "#/responses/errorResponse"
+        '500':
+          "$ref": "#/responses/errorResponse"
+definitions:
+  json-api-error:
+    type: object
+    properties:
+      id:
+        description: A unique identifier for this particular occurrence of the problem.
+        type: string
+      status:
+        description: The HTTP status code applicable to this problem, expressed as
+          a string value.
+        type: string
+      code:
+        description: An application-specific error code, expressed as a string value.
+        type: string
+      title:
+        description: A short, human-readable summary of the problem. It **SHOULD NOT**
+          change from occurrence to occurrence of the problem, except for purposes
+          of localization.
+        type: string
+      detail:
+        description: A human-readable explanation specific to this occurrence of the
+          problem.
+        type: string
+    additionalProperties: false
+  json-api-jsonapi:
+    description: An object describing the server's implementation
+    type: object
+    properties:
+      version:
+        type: string
+    additionalProperties: false
+  userJson:
+    properties:
+      accesssToken:
+        type: string
+      userProfile:
+        $ref: "#/definitions/userProfile"
+  userProfile:
+    properties:
+      firstName:
+        type: string
+        description: User's first name
+      lastName:
+        type: string
+        description: User's last name
+      company:
+        type: string
+        description: User's company name
+      address:
+        type: string
+        description: User's address
+  userData:
+    properties:
+      type:
+        type: string
+      id:
+        type: string
+      attributes:
+        $ref: "#/definitions/userJson"
+  json-api-failure:
+    type: object
+    required:
+    - errors
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/json-api-error"
+        uniqueItems: true
+      jsonapi:
+        $ref: "#/definitions/json-api-jsonapi"
+    additionalProperties: true
+responses:
+  errorResponse:
+    description: Common response for server errors
+    schema:
+      $ref: "#/definitions/json-api-failure"
+  userResponse:
+    description: Return the user profile and token
+    schema:
+      properties:
+        data:
+          $ref: "#/definitions/userData"
