@@ -19,6 +19,7 @@ app.use('/rest/v1/users', require('./server/src/users/router'));
 // Launch the application.
 http.createServer(app).listen(port,
   () => {
+    console.log('Server started');
     console.log(`App listening on port ${port}`);
   }
 );
